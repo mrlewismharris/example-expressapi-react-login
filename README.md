@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# An example React login using Express API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the future I'll upload a version without the express API aswell, where the script is just accesed via a route.
 
-## Available Scripts
+# At a glance...
 
-In the project directory, you can run:
+## What this is
 
-### `npm start`
+A simple example of a presentable interface for connecting to an express API and accessing specific routes after token validation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A few decentralised classes, states and hooks for handling stuff seperately.
+  
+## What this is not
+  
+This is not an all in one solution, it requires the React Node.js server and the Express Node.js server. It doesn't necessarily mean it is unusable - but if you slap it into an application (or use it as a template) please understand how it works first.
+  
+This does not do any validation.
+  
+This does not contain any form of database connectivity.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Detailed info
 
-### `npm test`
+## How it works
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is an example React app built from the npx create-react-app script (as can be seen in public/manifest.json), this is concise and secure, depending on the server.js implimentation of validation (make sure you're using HTTPS for any real world applications! I take no responsibility for any mitm data loss). On the app page the start "token" contains the return of the custom function "useToken", which gets the token from the browser's local storage, if there is no token (user not logged in) then the App will just return the <Login> JSX element, if you need to have a page displayed for guest visitors that isn't the same "login page" then you will need to add routing into the "if (!token) { }" section.
+  
+The token is set on "Login.js", the form is AJAX using fetch to submit user+pass in POST body (insert obligatory HTTPS importance here) to an express server, which **currently only returns a token and doesn't actually parse or validate the daat**, so edit for whatever backend database and server-side processing you'd like (it's a *feature* of this repo...), then back on App.js sets the token.
+  
+## What you might want to customize
+  
+To reuse userdata you might want to add a new route to the Express server which will respond to the given token with specific information such as username, email address, DOB, etc. possibly modify the API routes to fetch specific information with variables to be accessed through the React app in specific tasks.
