@@ -18,6 +18,17 @@ This does not do any validation.
   
 This does not contain any form of database connectivity.
 
+## How to use
+
+For anyone new to Node.js or using npm, please copy this and save it somewhere meaningful, as it is the default way to clone a repo without the node_modules folder which is left out of most GitHub repos to save upload time, and sometimes for licensing issues.
+
+1* Clone the repo,
+2* cd into the repo's main directory (where the package.json file is) and install with "npm install", this will intall all of the necessary node modules,
+3* "npm start" to run the first script in the "scripts" list in package.json (alternatively, run a specific script with "npm run script-name")
+4* "node server.js" to run the Express server in a new terminal (I'll add an npm script in a bit)
+
+Note: React auto refreshes, the Express server does not. To achieve this autorefresh I'd reccomend nodemon, but it will restart the Express server when any *relevant* files are changed (.js, .json), so you may have to fiddle with the file exclusions - fortunately the server.js script is very lightweight so it shouldn't cause any serious downtime.
+
 # Detailed info
 
 ## How it works
