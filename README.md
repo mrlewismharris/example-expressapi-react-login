@@ -25,9 +25,7 @@ For anyone new to Node.js or using npm, please copy this and save it somewhere m
 1* Clone the repo,
 2* cd into the repo's main directory (where the package.json file is) and install with "npm install", this will intall all of the necessary node modules,
 3* "npm start" to run the first script in the "scripts" list in package.json (alternatively, run a specific script with "npm run script-name")
-4* "node server.js" to run the Express server in a new terminal (I'll add an npm script in a bit)
-
-Note: React auto refreshes, the Express server does not. To achieve this autorefresh I'd reccomend nodemon, but it will restart the Express server when any *relevant* files are changed (.js, .json), so you may have to fiddle with the file exclusions - fortunately the server.js script is very lightweight so it shouldn't cause any serious downtime.
+4* "npm run api" to start the api server (not configured so will auto-refresh on every js and json file save via nodemon).
 
 # Detailed info
 
